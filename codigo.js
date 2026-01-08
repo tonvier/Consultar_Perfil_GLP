@@ -13,7 +13,6 @@ const JWT_SECRET = 'chave_secreta_e_aleatoria_12345';
 //Middleware para permitir que o Express entenda JSON no corpo das requisições
 app.use(express.json());
 
-
 //BANCO DE DADOS SIMULADO (Em memória)
 
 const usersMockDb = [
@@ -33,7 +32,6 @@ const usersMockDb = [
         createdAt: '2023-05-20T14:00:00Z'
     }
 ];
-
 
 //MIDDLEWARE DE AUTENTICAÇÃO
 
@@ -63,7 +61,6 @@ function authenticateToken(req, res, next) {
     });
 }
 
-
 //ROTAS
 
 //Rota de LOGIN (Auxiliar, apenas para gerar o token para teste)
@@ -86,7 +83,6 @@ app.post('/login', (req, res) => {
 
     res.json({ token: token });
 });
-
 
 //A ROTA SOLICITADA
 //Consultar Perfil (GET)
@@ -114,7 +110,6 @@ app.get('/users/profile', authenticateToken, (req, res) => {
     res.json(responseData);
 });
 
-
 //INICIALIZAÇÃO DO SERVIDOR
 app.listen(PORT, () => {
     console.log(`Servidor rodando em http://localhost:${PORT}`);
@@ -123,6 +118,7 @@ app.listen(PORT, () => {
     console.log(`2. Copie o token.`);
     console.log(`3. Faça GET em /users/profile adicionando o Header 'Authorization: Bearer SEU_TOKEN_AQUI'.`);
 });
+
 
 
 
